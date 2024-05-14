@@ -1,3 +1,4 @@
+import { registerAction } from "@/actions/authActions"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -15,8 +16,15 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/ui/tabs"
+import { useFormState } from "react-dom"
+
+const initState = {
+    status: 0,
+    errors: {}
+}
 
 export default function page() {
+    const [state, formAction] = useFormState()
     return (
         <div className="flex justify-center items-center h-screen bg-gray-400">
 
@@ -34,18 +42,46 @@ export default function page() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-2">
-                            <div className="space-y-1">
-                                <Label htmlFor="email">Email</Label>
-                                <Input id="email" type="email" />
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="password">password</Label>
-                                <Input id="password" type="password" />
-                            </div>
+                            <form action={registerAction}>
+                                <div className="space-y-1">
+                                    <Label htmlFor="name">Name</Label>
+                                    <Input
+                                        id="name"
+                                        type="text"
+                                        name="name"
+                                        placeholder="Enter your name."
+                                    />
+
+                                </div>
+
+                                <div className="space-y-1">
+                                    <Label htmlFor="email">Email</Label>
+                                    <Input
+                                        id="email"
+                                        type="email"
+                                        name="email"
+                                        placeholder="Enter your email."
+                                    />
+
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input
+                                        id="password"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Enter your password."
+                                    />
+
+                                </div>
+
+                                <div className="mt-2">
+                                    <Button type="submit">
+                                        Login
+                                    </Button>
+                                </div>
+                            </form>
                         </CardContent>
-                        <CardFooter>
-                            <Button className="w-full">Login</Button>
-                        </CardFooter>
                     </Card>
                 </TabsContent>
                 <TabsContent value="password">
@@ -57,29 +93,67 @@ export default function page() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-2">
-                            <div className="space-y-1">
-                                <Label htmlFor="name">Name</Label>
-                                <Input id="name" type="text" />
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="email">Email</Label>
-                                <Input id="email" type="email" />
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="password">password</Label>
-                                <Input id="password" type="password" />
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="cpassword">Confirm Password</Label>
-                                <Input id="cpassword" type="password" />
-                            </div>
+                            <form action={registerAction}>
+                                <div className="space-y-1">
+                                    <Label htmlFor="name">Name</Label>
+                                    <Input
+                                        id="name"
+                                        type="text"
+                                        name="name"
+                                        placeholder="Enter your name."
+                                    />
+
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="username">Username</Label>
+                                    <Input
+                                        id="username"
+                                        type="text"
+                                        name="username"
+                                        placeholder="Enter your username."
+                                    />
+
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="email">Email</Label>
+                                    <Input
+                                        id="email"
+                                        type="email"
+                                        name="email"
+                                        placeholder="Enter your email."
+                                    />
+
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input
+                                        id="password"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Enter your password."
+                                    />
+
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="cpassword">Confirm Password</Label>
+                                    <Input
+                                        id="cpassword"
+                                        type="password"
+                                        name="password_confirmation"
+                                        placeholder="Confirm your password."
+                                    />
+                                </div>
+                                <div className="mt-2 ">
+                                    <Button className="w-full" type="submit">
+                                        Create Your Account
+                                    </Button>
+                                </div>
+                            </form>
                         </CardContent>
-                        <CardFooter>
-                            <Button className="w-full">Create Your Account</Button>
-                        </CardFooter>
+
                     </Card>
                 </TabsContent>
             </Tabs>
-        </div>
+        </div >
     )
 }
