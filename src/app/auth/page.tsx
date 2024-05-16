@@ -1,3 +1,4 @@
+"use client"
 import { registerAction } from "@/actions/authActions"
 import { Button } from "@/components/ui/button"
 import {
@@ -24,9 +25,9 @@ const initState = {
 }
 
 export default function page() {
-    const [state, formAction] = useFormState()
+    const [state, formAction] = useFormState(registerAction, initState)
     return (
-        <div className="flex justify-center items-center h-screen bg-gray-400">
+        <div className="flex justify-center items-center h-screen bg-gray-400 ">
 
             <Tabs defaultValue="account" className="w-[400px]">
                 <TabsList className="grid w-full grid-cols-2">
@@ -42,7 +43,7 @@ export default function page() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-2">
-                            <form action={registerAction}>
+                            <form action={formAction}>
                                 <div className="space-y-1">
                                     <Label htmlFor="name">Name</Label>
                                     <Input
@@ -51,6 +52,7 @@ export default function page() {
                                         name="name"
                                         placeholder="Enter your name."
                                     />
+                                    <span className="text-red-400">{state?.error?.name}</span>
 
                                 </div>
 
@@ -62,6 +64,7 @@ export default function page() {
                                         name="email"
                                         placeholder="Enter your email."
                                     />
+                                    <span className="text-red-400">{state?.error?.email}</span>
 
                                 </div>
                                 <div className="space-y-1">
@@ -72,6 +75,7 @@ export default function page() {
                                         name="password"
                                         placeholder="Enter your password."
                                     />
+                                    <span className="text-red-400">{state?.error?.password}</span>
 
                                 </div>
 
@@ -93,7 +97,7 @@ export default function page() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-2">
-                            <form action={registerAction}>
+                            <form action={formAction}>
                                 <div className="space-y-1">
                                     <Label htmlFor="name">Name</Label>
                                     <Input
@@ -102,6 +106,7 @@ export default function page() {
                                         name="name"
                                         placeholder="Enter your name."
                                     />
+                                    <span className="text-red-400">{state?.error?.name}</span>
 
                                 </div>
                                 <div className="space-y-1">
@@ -112,6 +117,7 @@ export default function page() {
                                         name="username"
                                         placeholder="Enter your username."
                                     />
+                                    <span className="text-red-400">{state?.error?.username}</span>
 
                                 </div>
                                 <div className="space-y-1">
@@ -122,6 +128,7 @@ export default function page() {
                                         name="email"
                                         placeholder="Enter your email."
                                     />
+                                    <span className="text-red-400">{state?.error?.email}</span>
 
                                 </div>
                                 <div className="space-y-1">
@@ -132,6 +139,7 @@ export default function page() {
                                         name="password"
                                         placeholder="Enter your password."
                                     />
+                                    <span className="text-red-400">{state?.error?.password}</span>
 
                                 </div>
                                 <div className="space-y-1">
@@ -142,6 +150,7 @@ export default function page() {
                                         name="password_confirmation"
                                         placeholder="Confirm your password."
                                     />
+                                    <span className="text-red-400">{state?.error?.password_confirmation}</span>
                                 </div>
                                 <div className="mt-2 ">
                                     <Button className="w-full" type="submit">
